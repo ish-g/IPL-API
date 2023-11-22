@@ -110,9 +110,3 @@ def main():
         if enter:
             response6 = requests.get(f"https://bagmax3443.pythonanywhere.com/api/batsman-record?batsman={i5}").json()
             batsman_record(response6)
-
-
-st.set_option('deprecation.showfileUploaderEncoding', False)
-
-if __name__ == "__main__":
-    main()
