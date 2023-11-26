@@ -49,13 +49,20 @@ def batsman_record(batsman):
 
 
 def teamvteam(team1, team2):
-    valid_teams = pd.concat((df['Team1'], df['Team2'])).unique().tolist()
+    global valid_teams
     if team1 in valid_teams and team2 in valid_teams:
         temp_df = df[(df['Team1'] == team1) & (df['Team2'] == team2) | (df['Team1'] == team2) & (df['Team2'] == team1)]
         total_matches = temp_df.shape[0]
-        w1 = temp_df['WinningTeam'].value_counts()[team1]
-        w2 = temp_df['WinningTeam'].value_counts()[team2]
-
+        if team1 in temp_df['WinningTeam'].values:
+            w1 = temp_df['WinningTeam'].value_counts()[team1]
+        else:
+            w1 = 0
+        if team2 in temp_df['WinningTeam'].values:
+            w2 = temp_df['WinningTeam'].value_counts()[team2]
+        else:
+            w2 = 0
+        
+        print(temp_df['WinningTeam'])
         dict1 = {
 
             'Total_matches': str(total_matches),
