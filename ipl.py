@@ -48,6 +48,7 @@ def batsman_record(batsman):
     return json.dumps(dict12, cls=NpEncoder)
 
 
+valid_teams = pd.concat((df['Team1'], df['Team2'])).unique().tolist()
 def teamvteam(team1, team2):
     global valid_teams
     if team1 in valid_teams and team2 in valid_teams:
